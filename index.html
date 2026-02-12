@@ -29,7 +29,7 @@ button {
   border-radius: 30px;
   color: white;
   cursor: pointer;
-  margin-top: 20px;
+  margin: 15px;
   transition: 0.3s;
 }
 
@@ -42,7 +42,6 @@ button:hover {
 .heart {
   position: absolute;
   top: -10px;
-  color: pink;
   font-size: 20px;
   animation: fall linear infinite;
 }
@@ -53,12 +52,12 @@ button:hover {
   }
 }
 
-/* YouTube hidden player */
+/* YouTube player */
 .music {
   position: fixed;
   bottom: 10px;
   right: 10px;
-  opacity: 0.3;
+  opacity: 0.4;
 }
 </style>
 </head>
@@ -67,9 +66,12 @@ button:hover {
 
 <h1>Will You Be My Galentine? 💕</h1>
 
-<button onclick="alert('YAYYYY 💖 New York City bestie energy activated ✨')">
-  YES 💗
-</button>
+<div>
+  <button onclick="sayYes()">YES 💗</button>
+  <button id="noBtn">No 😒</button>
+</div>
+
+<p style="margin-top:20px;">(tap anywhere if music doesn’t start 🎶)</p>
 
 <!-- Lauv - I Like Me Better -->
 <div class="music">
@@ -81,6 +83,24 @@ button:hover {
 </div>
 
 <script>
+// YES button
+function sayYes() {
+  alert("YAYYYY 💖 To be drunk and in love in New York City ✨");
+}
+
+// NO button runs away
+const noBtn = document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover", () => {
+  const x = Math.random() * (window.innerWidth - 100);
+  const y = Math.random() * (window.innerHeight - 50);
+
+  noBtn.style.position = "absolute";
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+});
+
+// Falling hearts
 function createHeart() {
   const heart = document.createElement("div");
   heart.classList.add("heart");
